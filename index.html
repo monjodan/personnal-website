@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Jordan Monnet — AI strategy advisor. Local AI, enterprise advisory, and ventures across Seoul, Tokyo, and Paris.">
+<title>Jordan Monnet — AI Strategy Advisor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --navy-light: #2a4a8a;
+    --navy-muted: #3d5a8a;
+    --grey-dark: #2c2c2e;
+    --grey-mid: #6b7280;
+    --grey-light: #9ca3af;
+    --grey-surface: #f4f5f7;
+    --grey-line: #e2e4e8;
+    --white: #ffffff;
+    --cream: #fafaf8;
+    --nav-h: 60px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--grey-dark);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.nav-open,
+  body.lightbox-open { overflow: hidden; }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 12px 16px;
+    background: var(--navy);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .skip-link:focus { left: 16px; top: 16px; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(20px, 4vw, 48px);
+    height: var(--nav-h);
+    background: rgba(250, 250, 248, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--grey-line);
+  }
+
+  .nav-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    color: var(--navy);
+    z-index: 101;
+  }
+
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    border: 1px solid var(--grey-line);
+    border-radius: 2px;
+    background: var(--white);
+    cursor: pointer;
+    z-index: 101;
+  }
+  .nav-toggle:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 2px;
+  }
+  .nav-toggle-bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--navy);
+    position: relative;
+    transition: background 0.2s;
+  }
+  .nav-toggle-bar::before,
+  .nav-toggle-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: var(--navy);
+    transition: transform 0.2s;
+  }
+  .nav-toggle-bar::before { top: -6px; }
+  .nav-toggle-bar::after { top: 6px; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar { background: transparent; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar::before { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar::after { transform: translateY(-6px) rotate(-45deg); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 32px);
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey-mid);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--navy); }
+
+  .nav-socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--grey-line);
+    border-radius: 50%;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .nav-socials a:hover {
+    border-color: var(--navy);
+    background: var(--navy);
+  }
+
+  .nav-socials a:hover svg { fill: white; }
+
+  .nav-socials svg {
+    width: 13px;
+    height: 13px;
+    fill: var(--grey-mid);
+    transition: fill 0.2s;
+  }
+
+  .nav-cta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--navy);
+    padding: 8px 18px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  button.nav-cta { -webkit-appearance: none; appearance: none; }
+
+  .nav-cta:hover { background: var(--navy-light); }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  @media (max-width: 880px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 0;
+      padding: 24px clamp(20px, 4vw, 48px) 48px;
+      background: rgba(250, 250, 248, 0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grey-line);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s;
+      z-index: 99;
+    }
+    .nav-links.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav-links a {
+      font-size: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--grey-line);
+    }
+    .nav-actions .nav-socials { display: none; }
+    .nav-actions .nav-cta { font-size: 11px; padding: 8px 14px; }
+  }
+
+  /* HERO */
+  .hero-wrap { border-bottom: 1px solid var(--grey-line); }
+
+  .hero {
+    padding: calc(var(--nav-h) + 80px) clamp(20px, 4vw, 48px) 72px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr min(340px, 38vw);
+    gap: clamp(40px, 6vw, 80px);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding-top: calc(var(--nav-h) + 48px);
+    }
+    .hero-right { order: -1; max-width: 280px; margin: 0 auto; width: 100%; }
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy-muted);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--navy-muted);
+    flex-shrink: 0;
+  }
+
+  .hero-headline {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--navy);
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--grey-mid);
+  }
+
+  .hero-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--grey-mid);
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+
+  .hero-body strong {
+    font-weight: 500;
+    color: var(--grey-dark);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .btn-primary {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--navy);
+    padding: 14px 28px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  button.btn-primary { -webkit-appearance: none; appearance: none; }
+
+  .btn-primary:hover { background: var(--navy-light); }
+
+  .btn-ghost {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--grey-mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--grey-line);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--navy); border-color: var(--navy); }
+
+  .hero-right { padding-top: 8px; }
+
+  .hero-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--grey-line);
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 12%;
+    display: block;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    background: var(--white);
+    border: 1px solid var(--grey-line);
+    padding: 6px 12px;
+    border-radius: 999px;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 768px) {
+    .hero-tags { justify-content: center; }
+  }
+
+  /* BELIEFS BAND */
+  .beliefs {
+    background: var(--navy);
+    padding: clamp(36px, 6vw, 48px) clamp(20px, 4vw, 48px);
+  }
+
+  .beliefs-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+
+  @media (max-width: 900px) {
+    .beliefs-inner { grid-template-columns: 1fr; }
+  }
+
+  .belief-item {
+    padding: 0 40px 0 0;
+  }
+
+  .belief-item + .belief-item {
+    border-left: 1px solid rgba(255,255,255,0.12);
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .belief-item:last-child { padding-right: 0; }
+
+  @media (max-width: 900px) {
+    .belief-item { padding: 24px 0 !important; border-left: none !important; }
+    .belief-item + .belief-item {
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+  }
+
+  .belief-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+
+  .belief-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .belief-text {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* ADVISORY */
+  .advisory-wrap { border-bottom: 1px solid var(--grey-line); }
+
+  .advisory {
+    padding: clamp(56px, 8vw, 96px) clamp(20px, 4vw, 48px);
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .advisory { grid-template-columns: 1fr; }
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy-muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--navy-muted);
+    flex-shrink: 0;
+  }
+
+  .adv-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(24px, 4vw, 30px);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--navy);
+    margin-bottom: 18px;
+  }
+
+  .adv-body {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--grey-mid);
+    margin-bottom: 36px;
+  }
+
+  .offer-list { list-style: none; }
+
+  .offer-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid var(--grey-line);
+  }
+
+  .offer-item:last-child { border-bottom: 1px solid var(--grey-line); }
+
+  .offer-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    color: var(--grey-light);
+    min-width: 20px;
+    padding-top: 2px;
+  }
+
+  .offer-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .offer-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey-mid);
+    line-height: 1.65;
+  }
+
+  .sf-card {
+    border: 1px solid var(--grey-line);
+    border-radius: 2px;
+    padding: 28px;
+    background: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .sf-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .sf-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--navy);
+  }
+
+  .sf-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy-muted);
+    background: var(--grey-surface);
+    padding: 4px 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .sf-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--grey-mid);
+    margin-bottom: 18px;
+  }
+
+  .sf-link {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy);
+    padding-bottom: 1px;
+    transition: opacity 0.2s;
+  }
+
+  .sf-link:hover { opacity: 0.6; }
+
+  .also-active {
+    padding: 20px 0 0;
+  }
+
+  .also-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    margin-bottom: 12px;
+  }
+
+  .also-item {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey-mid);
+    padding: 6px 0;
+    border-top: 1px solid var(--grey-line);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .also-item::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--navy-muted);
+    flex-shrink: 0;
+  }
+
+  /* TRACK RECORD */
+  .track {
+    background: var(--grey-surface);
+    padding: clamp(48px, 8vw, 72px) clamp(20px, 4vw, 48px);
+    border-top: 1px solid var(--grey-line);
+    border-bottom: 1px solid var(--grey-line);
+  }
+
+  .track-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .track-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--grey-line);
+    border: 1px solid var(--grey-line);
+    margin-top: 32px;
+  }
+
+  @media (max-width: 900px) {
+    .track-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .track-grid { grid-template-columns: 1fr; }
+  }
+
+  .track-card {
+    background: var(--white);
+    padding: 24px;
+  }
+
+  .tc-status {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    margin-bottom: 10px;
+  }
+
+  .tc-status.exited { color: #2d6a4f; }
+
+  .tc-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .tc-desc {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--grey-mid);
+    line-height: 1.6;
+  }
+
+  .exit-badge {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    background: #d8f3dc;
+    color: #2d6a4f;
+    border-radius: 2px;
+  }
+
+  .track-footnote {
+    margin-top: 24px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey-mid);
+    line-height: 1.7;
+  }
+
+  /* BOTTOM ROW */
+  .bottom-wrap {
+    border-top: 1px solid var(--grey-line);
+    border-bottom: 1px solid var(--grey-line);
+  }
+
+  .bottom-sections {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  @media (max-width: 768px) {
+    .bottom-sections { grid-template-columns: 1fr; }
+  }
+
+  .bottom-block {
+    padding: clamp(48px, 8vw, 72px) clamp(20px, 4vw, 48px);
+  }
+
+  .bottom-block + .bottom-block {
+    border-left: 1px solid var(--grey-line);
+  }
+
+  @media (max-width: 768px) {
+    .bottom-block + .bottom-block {
+      border-left: none;
+      border-top: 1px solid var(--grey-line);
+    }
+  }
+
+  .bottom-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(20px, 3vw, 22px);
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 12px;
+    margin-top: 16px;
+  }
+
+  .bottom-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--grey-mid);
+    margin-bottom: 20px;
+  }
+
+  .art-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 20px 0;
+  }
+
+  .art-tile {
+    aspect-ratio: 1;
+    border-radius: 1px;
+    border: none;
+    padding: 0;
+    cursor: zoom-in;
+    overflow: hidden;
+    background: var(--grey-line);
+    position: relative;
+    display: block;
+    font: inherit;
+  }
+
+  .art-tile:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 2px;
+  }
+
+  .art-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .art-tile:hover img { transform: scale(1.04); }
+
+  .art-tile-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 10px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: linear-gradient(transparent, rgba(15, 31, 61, 0.75));
+    text-align: left;
+    pointer-events: none;
+  }
+
+  .invest-points { margin-top: 16px; }
+
+  .inv-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-top: 1px solid var(--grey-line);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey-mid);
+    line-height: 1.6;
+  }
+
+  .inv-row:last-child { border-bottom: 1px solid var(--grey-line); }
+
+  .inv-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--navy-muted);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER CTA */
+  .footer-cta {
+    background: var(--navy);
+    padding: clamp(64px, 10vw, 96px) clamp(20px, 4vw, 48px);
+    text-align: center;
+  }
+
+  .fcta-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 24px;
+  }
+
+  .fcta-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(28px, 6vw, 38px);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fcta-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 40px;
+    line-height: 1.75;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fcta-btn {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--white);
+    padding: 16px 36px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  button.fcta-btn { -webkit-appearance: none; appearance: none; }
+
+  .fcta-btn:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer {
+    background: var(--grey-dark);
+    padding: 28px clamp(20px, 4vw, 48px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-link {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover { color: rgba(255,255,255,0.7); }
+
+  .footer-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-social {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .footer-social:hover {
+    border-color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Hero entrance */
+  .hero-entrance {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: heroIn 0.75s ease forwards;
+  }
+  .hero-entrance:nth-child(1) { animation-delay: 0.05s; }
+  .hero-entrance:nth-child(2) { animation-delay: 0.12s; }
+  .hero-entrance:nth-child(3) { animation-delay: 0.2s; }
+  .hero-entrance:nth-child(4) { animation-delay: 0.28s; }
+  @keyframes heroIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-entrance { opacity: 1; transform: none; animation: none; }
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(15, 31, 61, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s;
+  }
+  .lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .lightbox img {
+    max-width: min(96vw, 1200px);
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+  .lightbox-close:focus-visible {
+    outline: 2px solid var(--white);
+    outline-offset: 2px;
+  }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    text-align: center;
+    max-width: 90vw;
+  }
+
+  .full-divider {
+    border: none;
+    border-top: 1px solid var(--grey-line);
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav aria-label="Primary">
+  <div class="nav-name">Jordan Monnet</div>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+    <span class="nav-toggle-bar" aria-hidden="true"></span>
+  </button>
+  <div class="nav-links" id="nav-menu">
+    <a href="#advisory">Advisory</a>
+    <a href="#ventures">Ventures</a>
+    <a href="#investing">Investing</a>
+    <a href="#creative">Creative</a>
+  </div>
+  <div class="nav-actions">
+    <div class="nav-socials">
+      <a href="https://www.linkedin.com/in/jordan-monnet-65123028/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/jmonnet/" target="_blank" rel="noopener noreferrer" title="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+    </div>
+    <button type="button" class="nav-cta calendly-trigger">Work with me</button>
+  </div>
+</nav>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero-wrap" aria-labelledby="hero-heading">
+  <div class="hero">
+    <div>
+      <p class="hero-label hero-entrance">AI Strategy · Seoul · Tokyo · Paris</p>
+      <h1 id="hero-heading" class="hero-headline hero-entrance">Most companies adopt AI.<br><em>Few actually control it.</em></h1>
+      <p class="hero-body hero-entrance">
+        I help leadership teams build <strong>AI strategies they own</strong>, not just subscribe to. That means understanding the real risks, choosing the right architecture, and deploying systems that keep sensitive data inside your organization.<br><br>
+        I built <strong>Smart Fellow</strong> because I believed enterprises deserved an alternative to cloud-dependent AI. That experience is what I bring to every advisory engagement.
+      </p>
+      <div class="hero-actions hero-entrance">
+        <button type="button" class="btn-primary calendly-trigger">Discuss your AI strategy</button>
+        <a href="#advisory" class="btn-ghost">See how I work →</a>
+      </div>
+    </div>
+    <div class="hero-right hero-entrance">
+      <div class="hero-photo">
+        <img src="media/profile-photo.jpg" alt="Portrait of Jordan Monnet" width="720" height="1080" fetchpriority="high">
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">PhD in Biophysics</span>
+        <span class="hero-tag">Serial Entrepreneur</span>
+        <span class="hero-tag">40 under 40 in AI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BELIEFS -->
+<section class="beliefs" aria-label="Principles">
+  <div class="beliefs-inner">
+    <div class="belief-item reveal">
+      <div class="belief-number">01</div>
+      <div class="belief-title">AI you don't control is a liability</div>
+      <div class="belief-text">Most enterprise AI creates dependencies that grow invisibly until they become critical vulnerabilities — in security, compliance, and operational continuity.</div>
+    </div>
+    <div class="belief-item reveal">
+      <div class="belief-number">02</div>
+      <div class="belief-title">Risk is manageable if you understand it</div>
+      <div class="belief-text">Most organizations adopt AI without mapping what they're actually exposing. That's a strategy problem before it's a technical one. Naming the risks is where good strategy starts.</div>
+    </div>
+    <div class="belief-item reveal">
+      <div class="belief-number">03</div>
+      <div class="belief-title">Cloud AI has a carbon cost most ignore</div>
+      <div class="belief-text">Local deployment isn't just more private — it's significantly more efficient. Responsible AI and performant AI are not opposites. They converge at the edge.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVISORY -->
+<section id="advisory" class="advisory-wrap">
+  <div class="advisory">
+    <div>
+      <div class="section-tag reveal">Advisory</div>
+      <h2 class="adv-title reveal">What I help organizations do</h2>
+      <p class="adv-body reveal">I work with leadership teams, boards, and founders who need someone who has built AI systems, not just theorized about them. Engagements are selective and focused on real decisions with real consequences.</p>
+      <ul class="offer-list">
+        <li class="offer-item reveal">
+          <span class="offer-num">01</span>
+          <div>
+            <div class="offer-title">AI strategy definition</div>
+            <div class="offer-desc">What to adopt, what to avoid, what your organization is actually ready for, and what the risks of each path are. Clear recommendations, not frameworks.</div>
+          </div>
+        </li>
+        <li class="offer-item reveal">
+          <span class="offer-num">02</span>
+          <div>
+            <div class="offer-title">Board and committee roles</div>
+            <div class="offer-desc">Ongoing AI expertise at the decision-making level for companies navigating fast-moving technical and regulatory landscapes across Europe and Asia.</div>
+          </div>
+        </li>
+        <li class="offer-item reveal">
+          <span class="offer-num">03</span>
+          <div>
+            <div class="offer-title">Local AI implementation</div>
+            <div class="offer-desc">When local deployment is the right answer, Smart Fellow becomes the execution partner. Strategy and implementation under one roof.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="ventures">
+      <div class="section-tag reveal">The execution layer</div>
+      <div class="sf-card reveal">
+        <div class="sf-header">
+          <div class="sf-name">Smart Fellow</div>
+          <div class="sf-tag">Venture</div>
+        </div>
+        <p class="sf-desc">I founded Smart Fellow to solve the exact problem I kept seeing in advisory work: enterprises that needed AI but couldn't risk their data leaving the building. Smart Fellow deploys local AI agents directly into client infrastructure — air-gapped, hardware-bound, and fully sovereign.</p>
+        <a href="https://smartfellow.ai" class="sf-link" target="_blank" rel="noopener noreferrer">smartfellow.ai ↗</a>
+      </div>
+      <div class="also-active reveal">
+        <div class="also-label">Also active in</div>
+        <div class="also-item">Jury member at JETRO — evaluating startup applications</div>
+        <div class="also-item">Coach at KOSME — Korean startups entering European markets</div>
+        <div class="also-item">Brand &amp; creative studio — Studio Monjo, Seoul</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section class="track">
+  <div class="track-inner">
+    <div class="section-tag reveal">Track record</div>
+    <div class="track-grid">
+      <div class="track-card reveal">
+        <div class="tc-status">Current venture</div>
+        <div class="tc-name">Smart Fellow</div>
+        <div class="tc-desc">Local AI deployment for enterprises. Data sovereignty by design. Seoul-based, deploying globally.</div>
+      </div>
+      <div class="track-card reveal">
+        <div class="tc-status">Current venture</div>
+        <div class="tc-name">Studio Monjo</div>
+        <div class="tc-desc">Creative and brand studio. Design, identity, and visual work for founders and organizations.</div>
+      </div>
+      <div class="track-card reveal">
+        <div class="tc-status exited">Exited</div>
+        <div class="tc-name">nr2.io</div>
+        <div class="tc-desc">Co-founded and successfully exited.</div>
+        <div class="exit-badge">Exit</div>
+      </div>
+      <div class="track-card reveal">
+        <div class="tc-status exited">Exited</div>
+        <div class="tc-name">Karakul</div>
+        <div class="tc-desc">Co-founded and successfully exited.</div>
+        <div class="exit-badge">Exit</div>
+      </div>
+    </div>
+    <p class="track-footnote reveal">PhD in biophysics · Prior AI company founding experience · Korea conglomerate and VC networks · Active across Seoul, Tokyo, and Paris</p>
+  </div>
+</section>
+
+<!-- BOTTOM: CREATIVE + INVESTING -->
+<section class="bottom-wrap">
+  <div class="bottom-sections">
+    <div class="bottom-block" id="creative">
+      <div class="section-tag reveal">Creative practice</div>
+      <h3 class="bottom-title reveal">Design, art &amp; objects</h3>
+      <p class="bottom-body reveal">Brand and identity work through Studio Monjo. Art prints available on Naver Shop. Paper objects and notebooks through Maison du Cahier.</p>
+      <div class="art-grid">
+        <button type="button" class="art-tile reveal" data-lightbox-src="media/painting1.jpg" data-lightbox-caption="Art print — painting" aria-label="Enlarge artwork: print">
+          <img src="media/painting1.jpg" alt="Art print artwork" width="400" height="400" loading="lazy">
+          <span class="art-tile-label">Print</span>
+        </button>
+        <button type="button" class="art-tile reveal" data-lightbox-src="media/poster1.jpg" data-lightbox-caption="Brand and poster work" aria-label="Enlarge artwork: brand">
+          <img src="media/poster1.jpg" alt="Brand poster design" width="400" height="400" loading="lazy">
+          <span class="art-tile-label">Brand</span>
+        </button>
+        <button type="button" class="art-tile reveal" data-lightbox-src="media/painting2.jpg" data-lightbox-caption="Artwork — paper &amp; objects" aria-label="Enlarge artwork: paper">
+          <img src="media/painting2.jpg" alt="Paper and object artwork" width="400" height="400" loading="lazy">
+          <span class="art-tile-label">Paper</span>
+        </button>
+      </div>
+      <a href="#" class="sf-link reveal">View on Naver Shop ↗</a>
+    </div>
+    <div class="bottom-block" id="investing">
+      <div class="section-tag reveal">Investing</div>
+      <h3 class="bottom-title reveal">Physical AI across Asia-Europe</h3>
+      <p class="bottom-body reveal">Active deal flow across robotics, edge compute, and deep tech. Sourcing in Beijing, Tokyo, and Seoul — with a focus on founders building for the Asia-Europe corridor.</p>
+      <div class="invest-points">
+        <div class="inv-row reveal"><div class="inv-dot"></div><span>World models and foundation models for physical systems</span></div>
+        <div class="inv-row reveal"><div class="inv-dot"></div><span>Humanoid robotics, embodied AI, and real-world deployment</span></div>
+        <div class="inv-row reveal"><div class="inv-dot"></div><span>Edge compute, efficient inference, and hardware–software co-design</span></div>
+        <div class="inv-row reveal"><div class="inv-dot"></div><span>Founders with deep technical credibility and cross-market ambition</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta" id="contact">
+  <div class="fcta-label reveal">Get in touch</div>
+  <h2 class="fcta-title reveal">Let's talk about your AI strategy</h2>
+  <p class="fcta-sub reveal">Whether you're defining your first AI roadmap, navigating governance and risk, or evaluating local deployment — I'm happy to have a direct conversation.</p>
+  <button type="button" class="fcta-btn reveal calendly-trigger">Start the conversation</button>
+</section>
+</main>
+
+<footer>
+  <div class="footer-left">
+    <a href="https://smartfellow.ai" class="footer-link" target="_blank" rel="noopener noreferrer">smartfellow.ai</a>
+    <a href="https://studiomonjo.com" class="footer-link" target="_blank" rel="noopener noreferrer">studiomonjo.com</a>
+    <a href="https://igniteinnovation.com" class="footer-link" target="_blank" rel="noopener noreferrer">igniteinnovation.com</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://www.linkedin.com/in/jordan-monnet-65123028/" class="footer-social" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://www.instagram.com/jmonnet/" class="footer-social" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="#" class="footer-social">Naver Shop</a>
+  </div>
+</footer>
+
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+  <button type="button" class="lightbox-close" aria-label="Close preview">&times;</button>
+  <img src="" alt="">
+  <p class="lightbox-caption" id="lightbox-caption" hidden></p>
+</div>
+
+<script src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script>
+(function () {
+  var CALENDLY_URL = 'https://calendly.com/jordan-studiomonjo/ai-advisory-intro-call';
+
+  function openCalendly(e) {
+    e.preventDefault();
+    if (typeof Calendly !== 'undefined') {
+      Calendly.initPopupWidget({ url: CALENDLY_URL });
+    } else {
+      window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
+    }
+  }
+
+  document.querySelectorAll('.calendly-trigger').forEach(function (btn) {
+    btn.addEventListener('click', openCalendly);
+  });
+
+  var navToggle = document.getElementById('nav-toggle');
+  var navMenu = document.getElementById('nav-menu');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function () {
+      var open = navMenu.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('nav-open', open);
+    });
+    navMenu.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navMenu.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open menu');
+        document.body.classList.remove('nav-open');
+      });
+    });
+  }
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    var revealEls = document.querySelectorAll('.reveal');
+    if (revealEls.length && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = lightbox ? lightbox.querySelector('img') : null;
+  var lightboxCaption = document.getElementById('lightbox-caption');
+  var lastFocus = null;
+
+  function openLightbox(src, caption) {
+    if (!lightbox || !lightboxImg) return;
+    lastFocus = document.activeElement;
+    lightboxImg.src = src;
+    lightboxImg.alt = caption || 'Enlarged artwork';
+    lightbox.hidden = false;
+    requestAnimationFrame(function () { lightbox.classList.add('is-open'); });
+    document.body.classList.add('lightbox-open');
+    if (lightboxCaption) {
+      if (caption) {
+        lightboxCaption.textContent = caption;
+        lightboxCaption.hidden = false;
+      } else {
+        lightboxCaption.textContent = '';
+        lightboxCaption.hidden = true;
+      }
+    }
+    lightbox.querySelector('.lightbox-close').focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox || !lightboxImg) return;
+    lightbox.classList.remove('is-open');
+    document.body.classList.remove('lightbox-open');
+    lightboxImg.src = '';
+    if (lightboxCaption) {
+      lightboxCaption.textContent = '';
+      lightboxCaption.hidden = true;
+    }
+    setTimeout(function () { lightbox.hidden = true; }, 250);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('[data-lightbox-src]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openLightbox(btn.getAttribute('data-lightbox-src'), btn.getAttribute('data-lightbox-caption'));
+    });
+  });
+
+  if (lightbox) {
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox && !lightbox.hidden) closeLightbox();
+  });
+})();
+</script>
+</body>
+</html>
