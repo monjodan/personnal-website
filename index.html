@@ -77,6 +77,13 @@
     border-bottom: 1px solid var(--grey-line);
   }
 
+  @media (max-width: 880px) {
+    nav {
+      background: var(--cream);
+      backdrop-filter: none;
+    }
+  }
+
   .nav-name {
     font-family: 'Libre Baskerville', serif;
     font-size: 15px;
@@ -214,8 +221,8 @@
       justify-content: flex-start;
       gap: 0;
       padding: 24px clamp(20px, 4vw, 48px) 48px;
-      background: rgba(250, 250, 248, 0.98);
-      backdrop-filter: blur(12px);
+      background: var(--cream);
+      backdrop-filter: none;
       border-bottom: 1px solid var(--grey-line);
       transform: translateY(-100%);
       opacity: 0;
@@ -1079,7 +1086,7 @@
   <div class="hero">
     <div>
       <p class="hero-label hero-entrance">AI Strategy · Seoul · Tokyo · Paris</p>
-      <h1 id="hero-heading" class="hero-headline hero-entrance">Most companies adopt AI.<br><em>Few actually control it.</em></h1>
+      <h1 id="hero-heading" class="hero-headline hero-entrance">Most companies adopt&nbsp;AI.<br><em>Few actually control it.</em></h1>
       <p class="hero-body hero-entrance">
         I help leadership teams build <strong>AI strategies they own</strong>, not just subscribe to. That means understanding the real risks, choosing the right architecture, and deploying systems that keep sensitive data inside your organization.<br><br>
         I built <strong>Smart Fellow</strong> because I believed enterprises deserved an alternative to cloud-dependent AI. That experience is what I bring to every advisory engagement.
@@ -1166,9 +1173,9 @@
       </div>
       <div class="also-active reveal">
         <div class="also-label">Also active in</div>
-        <div class="also-item">Jury member at JETRO — evaluating startup applications</div>
-        <div class="also-item">Coach at KOSME — Korean startups entering European markets</div>
-        <div class="also-item">Brand &amp; creative studio — Studio Monjo, Seoul</div>
+        <div class="also-item">International Partner for HEC Paris — supporting startups</div>
+        <div class="also-item">Founding Partner for Ignite Innovation — investing in deeptech</div>
+        <div class="also-item">Founder &amp; Designer at Studio Monjo — advising startups on brand strategy</div>
       </div>
     </div>
   </div>
