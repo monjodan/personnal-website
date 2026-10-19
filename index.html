@@ -9,6 +9,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://jordanmonnet.com/">
 <link rel="icon" href="/media/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Jordan Monnet — Writing" href="/writing/feed.xml">
 
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Jordan Monnet">
@@ -427,6 +428,16 @@
   .timeline-role span { display: block; margin-top: 7px; color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
   .timeline-item p { max-width: 560px; margin: 0; color: var(--ink-soft); font-size: 14px; font-weight: 300; line-height: 1.72; }
 
+  .writing { background: var(--paper); }
+  .essay-list { border-top: 1px solid var(--line); }
+  .essay-row { display: grid; grid-template-columns: minmax(112px, 0.22fr) 1fr; gap: clamp(18px, 4vw, 58px); padding: 28px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .essay-row h3 { max-width: 690px; margin: 0; font-family: var(--serif); font-size: clamp(22px, 2.4vw, 30px); font-weight: 500; letter-spacing: -0.04em; line-height: 1.15; }
+  .essay-row h3 a { text-decoration: none; transition: color 0.2s ease; }
+  .essay-row h3 a:hover { color: var(--accent); }
+  .essay-row p { max-width: 690px; margin: 10px 0 0; color: var(--ink-soft); font-size: 14px; font-weight: 300; line-height: 1.72; }
+  .writing .text-link { margin-top: 34px; }
+  .text-link.is-internal::after { content: '→'; }
+
   .studio { background: var(--paper-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .studio-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.78fr); gap: clamp(40px, 7vw, 90px); align-items: center; }
   .studio-collage {
@@ -540,6 +551,7 @@
     .outcome, .outcome:nth-child(odd), .outcome:nth-child(even) { padding: 27px 0; border-right: 0; }
     .timeline-item { grid-template-columns: 1fr; gap: 9px; padding: 25px 0; }
     .timeline-role span { margin-bottom: 7px; }
+    .essay-row { grid-template-columns: 1fr; gap: 9px; padding: 25px 0; }
     .studio-collage { grid-template-columns: 1fr 1fr; grid-template-rows: 210px 200px; min-height: auto; }
     .studio-photo:first-child { grid-column: 1 / 3; }
     .contact-card { grid-template-columns: 1fr; padding: 38px 28px; }
@@ -565,6 +577,7 @@
   <div class="nav-menu" id="nav-menu">
     <a href="#work">Current work</a>
     <a href="#journey">Journey</a>
+    <a href="#writing">Writing</a>
     <a href="#studio">Studio Monjo</a>
     <a class="nav-contact" href="https://www.linkedin.com/in/jordan-monnet-65123028/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
   </div>
@@ -694,6 +707,26 @@
           <p>Studied DNA repair, led international research projects, co-authored five peer-reviewed publications, presented at nine conferences, and taught 360 hours.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="section writing" id="writing" aria-labelledby="writing-title">
+    <div class="section-inner">
+      <div class="section-heading">
+        <div class="section-index reveal">04 · Writing</div>
+        <div>
+          <h2 class="section-title reveal" id="writing-title">Occasional essays, <em>written to think.</em></h2>
+        </div>
+      </div>
+      <div class="essay-list">
+        <!-- writing:list -->
+        <article class="essay-row reveal">
+          <div class="timeline-date"><time datetime="2026-10-19">19 October 2026</time></div>
+          <div><h3><a href="/writing/an-ai-made-another-ai/">An AI made another AI stronger</a></h3><p>An agent 3D-printed the alignment tools for my paper cutter, and a stronger model tuned the models on my desk. What is left for us, for entrepreneurs, for investors?</p></div>
+        </article>
+        <!-- /writing:list -->
+      </div>
+      <a class="text-link is-internal reveal" href="/writing/">All essays</a>
     </div>
   </section>
 
