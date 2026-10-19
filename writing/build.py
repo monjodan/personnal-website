@@ -93,9 +93,9 @@ def feed(essays):
     built = format_datetime(dt.datetime.combine(essays[0]["date"], dt.time(9), SEOUL))
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" '
             'xmlns:content="http://purl.org/rss/1.0/modules/content/">\n<channel>\n'
-            f"  <title>{AUTHOR} — Writing</title>\n  <link>{SITE}/writing/</link>\n"
+            f"  <title>{AUTHOR} — Journal</title>\n  <link>{SITE}/writing/</link>\n"
             f'  <atom:link href="{SITE}/writing/feed.xml" rel="self" type="application/rss+xml"/>\n'
-            f"  <description>Essays by {AUTHOR}.</description>\n  <language>en</language>\n"
+            f"  <description>Journal entries by {AUTHOR}.</description>\n  <language>en</language>\n"
             f"  <lastBuildDate>{built}</lastBuildDate>\n{''.join(item(e) for e in essays)}</channel>\n</rss>\n")
 
 
@@ -104,7 +104,7 @@ def main():
     for e in essays:
         render_essay(e)
     latest = essays[0]
-    index = fill("page.html", page_title=f"Writing — {AUTHOR}", description=f"Essays by {AUTHOR}.",
+    index = fill("page.html", page_title=f"Journal — {AUTHOR}", description=f"Journal entries by {AUTHOR}.",
                  url=f"{SITE}/writing/", og_type="website", og_image=f"{SITE}{latest['media']}/og.jpg",
                  og_alt=html.escape(latest["alt"]), jsonld="",
                  content=fill("index.html", items="\n".join(card(e) for e in essays)))

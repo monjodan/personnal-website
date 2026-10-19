@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
-  <title>Jordan Monnet — Writing</title>
+  <title>Jordan Monnet — Journal</title>
   <link>https://jordanmonnet.com/writing/</link>
   <atom:link href="https://jordanmonnet.com/writing/feed.xml" rel="self" type="application/rss+xml"/>
-  <description>Essays by Jordan Monnet.</description>
+  <description>Journal entries by Jordan Monnet.</description>
   <language>en</language>
   <lastBuildDate>Mon, 19 Oct 2026 09:00:00 +0900</lastBuildDate>
   <item>
