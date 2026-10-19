@@ -400,7 +400,7 @@
   .outcomes-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line-light); }
   .outcome {
     display: grid;
-    grid-template-columns: minmax(120px, 0.36fr) 1fr;
+    grid-template-columns: minmax(max-content, 0.36fr) 1fr;
     gap: 24px;
     padding: 38px 32px 38px 0;
     border-bottom: 1px solid var(--line-light);
@@ -527,7 +527,7 @@
     .modes { grid-template-columns: 1fr; }
     .mode-card { min-height: 0; }
     .mode-card + .mode-card { border-left: 0; border-top: 1px solid var(--line); }
-    .outcome { grid-template-columns: 110px 1fr; }
+    .outcome { grid-template-columns: minmax(110px, max-content) 1fr; }
     .studio-grid { grid-template-columns: 1fr; }
     .studio-collage { min-height: 0; }
   }
@@ -659,7 +659,7 @@
       <div class="outcomes-grid">
         <div class="outcome reveal"><strong>$35M</strong><div><b>Invested in early-stage companies</b>Co-created the strategy, operating model, investment processes, and team for a cross-border early-stage fund.</div></div>
         <div class="outcome reveal"><strong>2 + 3</strong><div><b>Unicorns and acquisitions</b>Among a 24-company portfolio spanning AI infrastructure, semiconductors, digital health, and robotics.</div></div>
-        <div class="outcome reveal"><strong>2 exits</strong><div><b>Karakul, 2019 · nr2, 2025</b>Led product and technology strategy through Karakul’s sale, then brought nr2’s technology and workflows into Ignite.</div></div>
+        <div class="outcome reveal"><strong>2 exits</strong><div><b>Karakul, 2019 · nr2, 2025</b>Co-founded both companies and led them through a sale and a merger with distributed Europe–Asia teams.</div></div>
         <div class="outcome reveal"><strong>6 yrs</strong><div><b>Building nr2</b>Led the AI company from thesis to international operation, then integrated its technology and workflows into Ignite in 2025.</div></div>
       </div>
       <p class="client-line reveal">Selected enterprise relationships · <span>L’Oréal · Pernod Ricard · World Economic Forum · KEPCO</span></p>
