@@ -247,6 +247,19 @@
   .essay-text p:last-child { margin-bottom: 0; }
   .source-todo { display: inline-block; margin: 0 3px; padding: 0 7px; border: 1px dashed var(--accent); color: var(--accent); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; line-height: 1.9; text-decoration: none; text-transform: uppercase; vertical-align: 0.2em; white-space: nowrap; transition: background 0.2s ease, color 0.2s ease; }
   .source-todo:hover { background: var(--accent); color: var(--white); }
+  .essay-text sup { font-size: 0.6em; line-height: 0; vertical-align: super; }
+  .footnote-ref { padding: 0 1px; color: var(--accent); font-weight: 600; text-decoration: none; }
+  .footnote-ref:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .essay-text .footnote { margin-top: clamp(20px, 3vw, 32px); padding-top: 22px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; font-weight: 300; line-height: 1.65; }
+  .essay-text .footnote::before { content: 'Sources'; display: block; margin-bottom: 14px; color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  .essay-text .footnote hr { display: none; }
+  .essay-text .footnote ol { margin: 0; padding-left: 1.4em; }
+  .essay-text .footnote li + li { margin-top: 10px; }
+  .essay-text .footnote li:target { color: var(--ink); }
+  .essay-text .footnote p { margin: 0; }
+  .essay-text .footnote a { color: var(--ink); font-weight: 400; text-decoration-color: var(--line); text-underline-offset: 3px; transition: text-decoration-color 0.2s ease; }
+  .essay-text .footnote a:hover { text-decoration-color: var(--accent); }
+  .footnote-backref { margin-left: 2px; color: var(--accent) !important; text-decoration: none !important; }
   .essay-foot { max-width: 66ch; margin-top: clamp(48px, 6vw, 72px); padding-top: 26px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
   .essay-sign { color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
   .back-link { display: inline-flex; align-items: center; gap: 9px; padding-bottom: 3px; border-bottom: 1px solid var(--ink); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; }

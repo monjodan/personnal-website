@@ -7,7 +7,8 @@
 home-page essay list and /writing/feed.xml.  Run:  uv run writing/build.py
 
 Front matter keys: title, date (YYYY-MM-DD), summary, slug, lead, alt.
-Bracketed source markers like [arxiv.org] become visible placeholder links."""
+Bracketed source markers like [arxiv.org] become visible placeholder links;
+finished sources go in Markdown footnotes ([^1] ... [^1]: text), rendered as a Sources list."""
 import datetime as dt
 import html
 import json
@@ -41,7 +42,7 @@ def load(path):
     e["media"] = e["lead"].rsplit("/", 1)[0]
     placeholder = lambda m: (f'<a class="source-todo" href="#">source: {m.group(1)}</a>'
                              f"<!-- TODO: add source URL for {m.group(1)} -->")
-    e["html"] = re.sub(SOURCE, placeholder, markdown.markdown(body.strip()))
+    e["html"] = re.sub(SOURCE, placeholder, markdown.markdown(body.strip(), extensions=["footnotes"]))
     return e
 
 

@@ -269,6 +269,19 @@
   .essay-text p:last-child { margin-bottom: 0; }
   .source-todo { display: inline-block; margin: 0 3px; padding: 0 7px; border: 1px dashed var(--accent); color: var(--accent); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; line-height: 1.9; text-decoration: none; text-transform: uppercase; vertical-align: 0.2em; white-space: nowrap; transition: background 0.2s ease, color 0.2s ease; }
   .source-todo:hover { background: var(--accent); color: var(--white); }
+  .essay-text sup { font-size: 0.6em; line-height: 0; vertical-align: super; }
+  .footnote-ref { padding: 0 1px; color: var(--accent); font-weight: 600; text-decoration: none; }
+  .footnote-ref:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .essay-text .footnote { margin-top: clamp(20px, 3vw, 32px); padding-top: 22px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; font-weight: 300; line-height: 1.65; }
+  .essay-text .footnote::before { content: 'Sources'; display: block; margin-bottom: 14px; color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  .essay-text .footnote hr { display: none; }
+  .essay-text .footnote ol { margin: 0; padding-left: 1.4em; }
+  .essay-text .footnote li + li { margin-top: 10px; }
+  .essay-text .footnote li:target { color: var(--ink); }
+  .essay-text .footnote p { margin: 0; }
+  .essay-text .footnote a { color: var(--ink); font-weight: 400; text-decoration-color: var(--line); text-underline-offset: 3px; transition: text-decoration-color 0.2s ease; }
+  .essay-text .footnote a:hover { text-decoration-color: var(--accent); }
+  .footnote-backref { margin-left: 2px; color: var(--accent) !important; text-decoration: none !important; }
   .essay-foot { max-width: 66ch; margin-top: clamp(48px, 6vw, 72px); padding-top: 26px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
   .essay-sign { color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
   .back-link { display: inline-flex; align-items: center; gap: 9px; padding-bottom: 3px; border-bottom: 1px solid var(--ink); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; }
@@ -364,10 +377,24 @@
 <p>I know what this is: one person, one machine, a hobby-sized experiment. It proves nothing about where this goes. But it is the first time I have seen it happen on my own desk, and once you have seen it, it is hard to believe it stops there.</p>
 <p>What if we push this idea? What if we reach an infinite loop? What does it mean for us, for entrepreneurs, for investors? What should we work on, if the problems we solve are temporary? Should we invest in businesses we suspect won’t survive the next five years?</p>
 <p>Of course, we can invest in what powers AI. But are the limits we see today relevant for tomorrow?</p>
-<p>Take quantum computing. The promise is a machine so much more powerful than today’s that it could run AI at a fraction of the computing power we burn through on current chips. If that happens, “what powers AI” is not the same thing anymore. If I take seriously the idea that AI gets much better at research, why would I expect the obstacles to useful quantum machines to fall at the slow pace I’m used to? There is already a small, measurable example. On Google’s Willow processor, reinforcement learning reduced the logical error rate by a further 20% after experts had already calibrated the machine. The system learned to improve the control of a physical machine. <a class="source-todo" href="#">source: research.google</a><!-- TODO: add source URL for research.google --> A quantum computer is not automatically a faster machine for every task, and any speedup still has to survive the cost of actually running the computation. <a class="source-todo" href="#">source: arxiv.org</a><!-- TODO: add source URL for arxiv.org --> But that result makes it harder to treat today’s engineering difficulties as a stable measure of the future.</p>
-<p>And what about efficiency? What if AI figures out ways to run itself more efficiently? AI has started to solve problems we hadn’t been able to solve. This month, OpenAI published hundreds of mathematical research results produced by one of its models, many of them as proofs a computer can check. <a class="source-todo" href="#">source: OpenAI</a><!-- TODO: add source URL for OpenAI --> Are we confident that we even know what the problems are, once something so much more able than us is doing the research?</p>
+<p>Take quantum computing. The promise is a machine so much more powerful than today’s that it could run AI at a fraction of the computing power we burn through on current chips. If that happens, “what powers AI” is not the same thing anymore. If I take seriously the idea that AI gets much better at research, why would I expect the obstacles to useful quantum machines to fall at the slow pace I’m used to? There is already a small, measurable example. On Google’s Willow processor, reinforcement learning reduced the logical error rate by a further 20% after experts had already calibrated the machine. The system learned to improve the control of a physical machine.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> A quantum computer is not automatically a faster machine for every task, and any speedup still has to survive the cost of actually running the computation.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> But that result makes it harder to treat today’s engineering difficulties as a stable measure of the future.</p>
+<p>And what about efficiency? What if AI figures out ways to run itself more efficiently? AI has started to solve problems we hadn’t been able to solve. This month, OpenAI published hundreds of mathematical research results produced by one of its models, many of them as proofs a computer can check.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> Are we confident that we even know what the problems are, once something so much more able than us is doing the research?</p>
 <p>Here is the one thing I do believe. Everything that can be handed to the machine will be. It is what I already do at my own desk: I hand over the aligning, the business operations, the settings, and I keep the part I enjoy.</p>
 <p>So, here I am, writing in a notebook I made myself, with my own hands, and I’m thinking that maybe this is all we truly have left. Our ability to enjoy the present moment, to be creative, to interact with other humans. I am not sure I know what to think. But I will keep writing, because I write for myself, so I can understand what I think a little better.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Google Research, “<a href="https://research.google/blog/towards-a-quantum-computer-that-learns-from-its-errors/">Towards a quantum computer that learns from its errors</a>”, 22 July 2026, and the paper “<a href="https://www.nature.com/articles/s41586-026-10759-2">Reinforcement learning control of quantum error correction</a>”, <em>Nature</em>, 8 July 2026.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Hoefler, Häner and Troyer, “<a href="https://arxiv.org/abs/2307.00523">Disentangling hype from practicality: on realistically achieving quantum advantage</a>”, arXiv:2307.00523, 2023.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>OpenAI, “<a href="https://openai.com/index/sharing-ai-progress-in-mathematics/">Sharing AI progress in mathematics</a>”, 6 October 2026, and the <a href="https://github.com/openai/math">openai/math</a> repository. An earlier example of an open problem settled by a model: “<a href="https://openai.com/index/model-disproves-discrete-geometry-conjecture/">An OpenAI model has disproved a central conjecture in discrete geometry</a>”, 20 May 2026, with the proof “<a href="https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf">Planar point sets with many unit distances</a>” and “<a href="https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-remarks.pdf">Remarks on the disproof of the unit distance conjecture</a>” by Alon, Bloom, Gowers and others, both PDFs.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
     </div>
     <div class="essay-foot">
       <a class="back-link" href="/writing/">All essays</a>
