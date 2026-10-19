@@ -8,12 +8,12 @@
   <language>en</language>
   <lastBuildDate>Mon, 19 Oct 2026 09:00:00 +0900</lastBuildDate>
   <item>
-    <title>An AI made another AI stronger</title>
-    <link>https://jordanmonnet.com/writing/an-ai-made-another-ai/</link>
-    <guid isPermaLink="true">https://jordanmonnet.com/writing/an-ai-made-another-ai/</guid>
+    <title>What should we work on?</title>
+    <link>https://jordanmonnet.com/writing/what-should-we-work-on/</link>
+    <guid isPermaLink="true">https://jordanmonnet.com/writing/what-should-we-work-on/</guid>
     <pubDate>Mon, 19 Oct 2026 09:00:00 +0900</pubDate>
     <description>An agent 3D-printed the alignment tools for my paper cutter, and a stronger model tuned the models on my desk. What is left for us, for entrepreneurs, for investors?</description>
-    <content:encoded><![CDATA[<p><img src="https://jordanmonnet.com/media/writing/an-ai-made-another-ai/lead.jpg" alt="Jordan Monnet pulling the lever of a guillotine paper cutter, a blue alignment guide set against the blade"></p>
+    <content:encoded><![CDATA[<p><img src="https://jordanmonnet.com/media/writing/what-should-we-work-on/lead.jpg" alt="Jordan Monnet pulling the lever of a guillotine paper cutter, a blue alignment guide set against the blade"></p>
 <p>I make notebooks by hand, but I also built AI for years, and I enjoy automating everything around the creative, pleasurable part of the work.</p>
 <p>My cutting machine isn't the fanciest, and I struggle to align it. If it isn't aligned properly, the pages don't line up, the notebooks come out in different sizes, and the corners can't be rounded cleanly. It has wasted hours of my time. So a few months ago I 3D-modeled a small piece to align the machine. It worked well, but then I needed more sizes, and going back through the 3D modeling and the printer settings to optimize everything wasn't fun anymore.</p>
 <p>Naturally, I thought: could one of my agents take over the whole workflow? Improve my design, convert it to the printer's format, optimize the settings, and print it? So I connected everything, and now I have three perfectly sized alignment tools for my cutting machine, in the real world. I did nothing but describe my problem to an AI agent and approve the print.</p>

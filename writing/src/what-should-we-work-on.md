@@ -1,9 +1,9 @@
 ---
-title: An AI made another AI stronger
+title: What should we work on?
 date: 2026-10-19
 summary: An agent 3D-printed the alignment tools for my paper cutter, and a stronger model tuned the models on my desk. What is left for us, for entrepreneurs, for investors?
-slug: an-ai-made-another-ai
-lead: /media/writing/an-ai-made-another-ai/lead.jpg
+slug: what-should-we-work-on
+lead: /media/writing/what-should-we-work-on/lead.jpg
 alt: Jordan Monnet pulling the lever of a guillotine paper cutter, a blue alignment guide set against the blade
 ---
 
